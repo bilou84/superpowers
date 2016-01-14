@@ -82,7 +82,7 @@ interface SystemManifest {
 function loadSystemsInfo(callback: Function) {
   data.systemsById = {};
 
-  SupClient.fetch("/systems.json", "json", (err: Error, systemsInfo: SupCore.SystemsInfo) => {
+  SupClient.vachercher("/systems.json", "json", (err: Error, systemsInfo: SupCore.SystemsInfo) => {
     async.each(systemsInfo.list, (systemId, cb) => {
       i18nFiles.push({ root: `/systems/${systemId}`, name: "system", context: `system-${systemId}` });
       SupClient.fetch(`/systems/${systemId}/templates.json`, "json", (err: Error, templatesList: string[]) => {
